@@ -1,0 +1,408 @@
+@import '@fontsource/nunito/400.css';
+@import '@fontsource/nunito/600.css';
+@import '@fontsource/nunito/700.css';
+@import '@fontsource/nunito/800.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base Layer */
+@layer base {
+  html {
+    font-family: 'TT Norms Pro', 'Nunito', system-ui, sans-serif;
+    color: #1F3C6E; /* Set default text to navy blue */
+    @apply h-full;
+  }
+
+  body {
+    @apply relative antialiased h-full;
+    color: rgba(31, 60, 110, 1); /* #1F3C6E at 70% opacity */
+    overflow-x: hidden;
+  }
+
+  #root {
+    @apply h-full;
+  }
+
+  /* Set default text color to #1F3C6E at 70% opacity */
+  html, body {
+    color: rgba(31, 60, 110, 1);
+  }
+
+  /* Tailwind override for text-gray-500 and similar: lighter navy blue */
+  .text-gray-500, .text-gray-400, .text-gray-600 {
+    color: rgba(31, 60, 110, 0.5) !important;
+  }
+
+  /* Remove forced color for headings and spans to allow gradients and custom colors */
+  /* body, h1, h2, h3, h4, h5, h6, p, span, div, label, input, textarea, button, a, li, ul, ol, th, td {
+    color: rgba(31, 60, 110, 1);
+  } */
+
+  /* Only set default text color for body, not headings or spans */
+  body {
+    color: rgba(31, 60, 110, 1);
+  }
+
+  /* Remove forced color for headings and strong text to allow gradients */
+  /* h1, h2, h3, h4, h5, h6, strong, b {
+    color: rgba(31, 60, 110, 1);
+  } */
+
+  /* Optionally, override Tailwind's text-base and text-default classes if used */
+  .text-base, .text-default {
+    color: rgba(31, 60, 110, 1) !important;
+  }
+
+  html, body {
+    cursor: url('/cursor/Normal.cur') 0 0, auto;
+  }
+  a, button, [role="button"], .cursor-pointer {
+    cursor: url('/cursor/Link.cur') 0 0, pointer;
+  }
+  input, textarea, .cursor-text {
+    cursor: url('/cursor/Text.cur') 0 0, text;
+  }
+  .cursor-help {
+    cursor: url('/cursor/Help.cur') 0 0, help;
+  }
+  .cursor-move {
+    cursor: url('/cursor/Move.cur') 0 0, move;
+  }
+  .cursor-grab, .cursor-grabbing {
+    cursor: url('/cursor/Closehand.cur') 0 0, grab;
+  }
+  .cursor-zoom-in {
+    cursor: url('/cursor/Zoom-in.cur') 0 0, zoom-in;
+  }
+  .cursor-zoom-out {
+    cursor: url('/cursor/Zoom-out.cur') 0 0, zoom-out;
+  }
+  .cursor-unavailable {
+    cursor: url('/cursor/Unavailable.cur') 0 0, not-allowed;
+  }
+  .cursor-busy {
+    cursor: url('/cursor/Busy.ani'), progress;
+  }
+  .cursor-working {
+    cursor: url('/cursor/Working.ani'), progress;
+  }
+  .cursor-vertical-resize {
+    cursor: url('/cursor/Vertical Resize.cur') 0 0, ns-resize;
+  }
+  .cursor-horizontal-resize {
+    cursor: url('/cursor/Horizontal Resize.cur') 0 0, ew-resize;
+  }
+  .cursor-diagonal-resize-1 {
+    cursor: url('/cursor/Diagonal Resize 1.cur') 0 0, nwse-resize;
+  }
+  .cursor-diagonal-resize-2 {
+    cursor: url('/cursor/Diagonal Resize 2.cur') 0 0, nesw-resize;
+  }
+  .cursor-handwriting {
+    cursor: url('/cursor/Handwriting.cur') 0 0, pointer;
+  }
+  .cursor-pin {
+    cursor: url('/cursor/Pin.cur') 0 0, pointer;
+  }
+  .cursor-person {
+    cursor: url('/cursor/Person.cur') 0 0, pointer;
+  }
+  .cursor-precision {
+    cursor: url('/cursor/Precision.cur') 0 0, crosshair;
+  }
+  .cursor-pan {
+    cursor: url('/cursor/Pan.cur') 0 0, grab;
+  }
+}
+
+/* Component Layer */
+@layer components {
+  .glass-container {
+    @apply backdrop-blur-xl bg-white/10 shadow-xl rounded-2xl;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center px-5 py-3 rounded-xl font-medium
+    transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2
+    disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply bg-[#1F3C6E] text-white hover:bg-[#1F3C6E]/90 focus:ring-[#1F3C6E]/50
+    shadow-lg shadow-[#1F3C6E]/20 hover:shadow-[#1F3C6E]/30;
+  }
+
+  .btn-secondary {
+    @apply bg-white/90 text-[#1F3C6E] border border-[#1F3C6E]/20
+    hover:bg-[#1F3C6E]/5 focus:ring-[#1F3C6E]/30 shadow-md hover:shadow-lg;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl border border-[#1F3C6E]/20
+    focus:ring-2 focus:ring-[#1F3C6E]/50 focus:border-[#1F3C6E]/50 outline-none
+    bg-white/50 backdrop-blur-sm;
+  }
+}
+
+/* Animation */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@font-face {
+  font-family: 'Gilmer';
+  src: url('/font/Gilmer Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gilmer';
+  src: url('/font/Gilmer Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gilmer';
+  src: url('/font/Gilmer Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gilmer';
+  src: url('/font/Gilmer Heavy.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gilmer';
+  src: url('/font/Gilmer Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Gilmer';
+  src: url('/font/Gilmer Outline.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Actay';
+  src: url('/font/Actay-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Actay';
+  src: url('/font/Actay-RegularItalic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Actay';
+  src: url('/font/ActayCondensed-Thin.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Actay';
+  src: url('/font/ActayCondensed-ThinItalic.otf') format('opentype');
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Actay';
+  src: url('/font/ActayWide-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Actay';
+  src: url('/font/ActayWide-BoldItalic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Nomixa';
+  src: url('/font/Nomixa-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Nomixa';
+  src: url('/font/Nomixa-Italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Nomixa';
+  src: url('/font/Nomixa-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Nomixa';
+  src: url('/font/Nomixa-MediumItalic.otf') format('opentype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Nomixa';
+  src: url('/font/Nomixa-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Nomixa';
+  src: url('/font/Nomixa-SemiBoldItalic.otf') format('opentype');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Nomixa';
+  src: url('/font/Nomixa-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Nomixa';
+  src: url('/font/Nomixa-BoldItalic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Nomixa';
+  src: url('/font/Nomixa-Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Nomixa';
+  src: url('/font/Nomixa-BlackItalic.otf') format('opentype');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Nomixa';
+  src: url('/font/Nomixa-ExtraBold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Nomixa';
+  src: url('/font/Nomixa-ExtraBoldItalic.otf') format('opentype');
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'TT Norms Pro';
+  src: url('/font/TT Norms Pro/TTNormsPro-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'TT Norms Pro';
+  src: url('/font/TT Norms Pro/TTNormsPro-Italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'TT Norms Pro';
+  src: url('/font/TT Norms Pro/TTNormsPro-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'TT Norms Pro';
+  src: url('/font/TT Norms Pro/TTNormsPro-MediumItalic.otf') format('opentype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'TT Norms Pro';
+  src: url('/font/TT Norms Pro/TTNormsPro-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'TT Norms Pro';
+  src: url('/font/TT Norms Pro/TTNormsPro-BoldItalic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'TT Norms Pro';
+  src: url('/font/TT Norms Pro/TTNormsPro-Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'TT Norms Pro';
+  src: url('/font/TT Norms Pro/TTNormsPro-BlackItalic.otf') format('opentype');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@layer utilities {
+  .animate-gradient-move {
+    background-size: 200% 200%;
+    animation: gradientMove 8s ease-in-out infinite;
+  }
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
