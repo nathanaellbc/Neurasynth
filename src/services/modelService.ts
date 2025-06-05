@@ -5,7 +5,7 @@ export const modelService = {
     const formData = new FormData();
     formData.append('file', image);
 
-    const response = await fetch('https://backend-rao3.onrender.com', {
+    const response = await fetch('http://localhost:8000/predict, {
       method: 'POST',
       body: formData,
     });
